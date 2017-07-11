@@ -93,5 +93,7 @@ typings/
 .env
 env.sh
 
+# Config files
+config/
 
 # End of https://www.gitignore.io/api/go,node,linux
