@@ -2,6 +2,7 @@ package main
 
 import (
   "gawkbox-takehome/lib"
+  //"gawkbox-takehome/config"
 
   "database/sql"
   _ "github.com/go-sql-driver/mysql"

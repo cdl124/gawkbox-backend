@@ -2,6 +2,7 @@ package lib
 
 import "database/sql"
 import _ "github.com/go-sql-driver/mysql"
+import "golang.org/x/crypto/bcrypt"
 
 import "net/http"
 
@@ -24,6 +25,12 @@ func loginPage(res http.ResponseWriter, req *http.Request) {
 
   if err != nil {
     http.Redirect(res, req, "/", 301)
+    return
+  }
+
+  err = bcrypt.CompareHashAndPassword([]byte(databasePassword), []byte(password))
+  if err != nil {
+    http.Redirect(res, req, "/login", 301)
     return
   }
 
