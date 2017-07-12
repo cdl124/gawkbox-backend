@@ -1,14 +1,12 @@
-package login
+package lib
 
 import "database/sql"
 import _ "github.com/go-sql-driver/mysql"
 
-import "golang.org/x/crypto/bcrypt"
-
 import "net/http"
 
 var db *sql.DB
-var err Error
+var err error
 
 func loginPage(res http.ResponseWriter, req *http.Request) {
   if req.Method != "POST" {

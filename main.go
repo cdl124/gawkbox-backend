@@ -1,8 +1,7 @@
 package main
 
 import (
-  "./lib/signup"
-  "./lib/login"
+  "gawkbox-takehome/lib"
 
   "database/sql"
   _ "github.com/go-sql-driver/mysql"
@@ -12,8 +11,8 @@ import (
   "github.com/spf13/viper"
 )
 
-var db *sql.DB
-var err error
+//var db *sql.DB
+//var err error
 
 func main() {
 

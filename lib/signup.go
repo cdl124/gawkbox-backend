@@ -1,4 +1,4 @@
-package signup
+package lib
 
 import "database/sql"
 import _ "github.com/go-sql-driver/mysql"
@@ -6,8 +6,8 @@ import "golang.org/x/crypto/bcrypt"
 
 import "net/http"
 
-var db *sql.DB
-var err Error
+//var db *sql.DB
+//var err Error
 
 func signupPage(res http.ResponseWriter, req *http.Request) {
   if req.Method != "POST" {
@@ -31,7 +31,7 @@ func signupPage(res http.ResponseWriter, req *http.Request) {
     }
     _, err = db.Exec("INSERT INTO users(username, password) VALUES(?, ?)", username, hashedPassword)
     if err != nil {
-      http:Error(res, "Server error, unable to create your account.", 500)
+      http.Error(res, "Server error, unable to create your account.", 500)
       return
     }
 
