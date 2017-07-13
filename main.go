@@ -2,7 +2,6 @@ package main
 
 import (
   "gawkbox-takehome/lib"
-  //"gawkbox-takehome/config"
 
   "database/sql"
   _ "github.com/go-sql-driver/mysql"
@@ -12,13 +11,13 @@ import (
   "github.com/spf13/viper"
 )
 
-//var db *sql.DB
-//var err error
+var db *sql.DB
+var err error
 
 func main() {
 
   viper.SetConfigName("app")
-  viper.AddConfigpath("config")
+  viper.AddConfigpath("/config/")
 
   err := viper.ReadInConfig()
   if err != nil {
