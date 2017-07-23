@@ -23,13 +23,10 @@ func main() {
   if err != nil {
     fmt.Println("Config file not found...")
   } else {
-    mysqlconfig := viper.GetString("development.mysqlconfig")
-    port := viper.GetString("development.port")
-
-    fmt.Printf("\nDevelopment Config found:\n server = %s")
+    fmt.Printf("\nDevelopment Config found:\n server = ", viper.GetString("development.port"))
   }
 
-  db, err = sql.Open("mysql", mysqlconfig)
+  db, err = sql.Open("mysql", viper.GetString("development.mysqlconfig"))
   if err != nil {
     panic(err.Error())
   }
@@ -43,5 +40,5 @@ func main() {
   http.HandleFunc("/signup", lib.SignupPage)
   http.HandleFunc("/login", lib.LoginPage)
   http.HandleFunc("/", lib.HomePage)
-  http.ListenAndServe(port, nil)
+  http.ListenAndServe(viper.GetString("development.port"), nil)
 }
