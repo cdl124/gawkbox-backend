@@ -9,7 +9,7 @@ import "net/http"
 var db *sql.DB
 var err error
 
-func loginPage(res http.ResponseWriter, req *http.Request) {
+func LoginPage(res http.ResponseWriter, req *http.Request) {
   if req.Method != "POST" {
     http.ServeFile(res, req, "login.html")
     return

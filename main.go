@@ -2,13 +2,12 @@ package main
 
 import (
   "gawkbox-takehome/lib"
-
+  "github.com/spf13/viper"
   "database/sql"
   _ "github.com/go-sql-driver/mysql"
 
   "fmt"
   "net/http"
-  "github.com/spf13/viper"
 )
 
 var db *sql.DB
@@ -17,7 +16,8 @@ var err error
 func main() {
 
   viper.SetConfigName("app")
-  viper.AddConfigpath("/config/")
+  viper.AddConfigPath("config")
+  viper.AddConfigPath(".")
 
   err := viper.ReadInConfig()
   if err != nil {
@@ -40,8 +40,8 @@ func main() {
     panic(err.Error())
   }
 
-  http.HandleFunc("/signup", signupPage)
-  http.HandleFunc("/login", loginPage)
-  http.HandleFunc("/", homePage)
+  http.HandleFunc("/signup", lib.SignupPage)
+  http.HandleFunc("/login", lib.LoginPage)
+  http.HandleFunc("/", lib.HomePage)
   http.ListenAndServe(port, nil)
 }

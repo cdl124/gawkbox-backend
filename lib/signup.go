@@ -9,7 +9,7 @@ import "net/http"
 //var db *sql.DB
 //var err Error
 
-func signupPage(res http.ResponseWriter, req *http.Request) {
+func SignupPage(res http.ResponseWriter, req *http.Request) {
   if req.Method != "POST" {
     http.ServeFile(res, req, "signup.html")
     return
